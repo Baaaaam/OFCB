@@ -1,0 +1,94 @@
+<simulation>
+    <schematype>flat</schematype>
+    <control>
+        <duration>1200000</duration>
+        <startmonth>1</startmonth>
+        <startyear>0</startyear>
+        <dt>3600</dt>
+	<decay>lazy</decay>
+    </control>
+
+    <archetypes>
+        <spec><lib>cycamore</lib><name>Sink</name></spec>
+        <spec> <lib>cycamore</lib> <name>DeployInst</name></spec>
+        <spec><lib>cycamore</lib><name>Source</name></spec>
+        <spec><lib>cycamore</lib><name>Reactor</name></spec>
+        <spec><lib>cycamore</lib><name>Enrichment</name></spec>
+        <spec><lib>cycamore</lib><name>Storage</name></spec>
+        <spec><lib>agents</lib><name>NullRegion</name></spec>
+        <spec><lib>agents</lib><name>NullInst</name></spec>
+    </archetypes>
+
+    <prototype>
+        <name>Source</name>
+        <config>
+            <Source>
+                <outcommod>myZAI</outcommod>
+                <outrecipe>myZAI</outrecipe>
+                <throughput>1000</throughput>
+		<inventory_size>1000</inventory_size>
+            </Source>
+        </config>
+    </prototype>
+
+    <prototype>
+      <name>Storage_</name>
+      <config>
+	<Storage>
+	  <in_commods>
+	    <val>myZAI</val>
+	    <val>myzai_stored</val>
+	  </in_commods>
+	  <out_commods> <val>myzai_stored</val></out_commods>
+	  <residence_time>0</residence_time>
+	</Storage>
+      </config>
+    </prototype>
+
+
+    <prototype>
+      <name>Storage_2</name>
+      <config>
+	<Storage>
+	  <in_commods>
+	    <val>myzai_stored</val>
+	  </in_commods>
+	  <out_commods> <val>myzai_stored_2</val></out_commods>
+	  <residence_time>0</residence_time>
+	</Storage>
+      </config>
+    </prototype>
+    
+    <prototype>
+      <name>deployer</name>
+      <config>
+	<DeployInst>
+	  <prototypes>
+	    <val>Source</val>
+	    <val>Storage_</val>
+	  </prototypes>
+
+	  <build_times>
+	    <val>1</val>
+	    <val>1</val>
+	  </build_times>
+
+	  <n_build>
+	    <val>1</val>
+	    <val>1</val>
+	  </n_build>
+
+
+	</DeployInst>
+      </config>
+    </prototype>
+
+        <agent> <name>PrototypeDeployer</name> <prototype>deployer</prototype> </agent>
+
+    <recipe>
+        <name>myZAI</name>
+        <basis>atom</basis>
+        <nuclide><id>942410000</id>    <comp>1</comp></nuclide>
+    </recipe>
+    
+</simulation>
