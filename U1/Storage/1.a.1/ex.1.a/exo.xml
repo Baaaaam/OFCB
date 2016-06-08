@@ -1,7 +1,7 @@
 <simulation>
     <schematype>flat</schematype>
     <control>
-        <duration>1200000</duration>
+        <duration>720</duration>
         <startmonth>1</startmonth>
         <startyear>0</startyear>
         <dt>3600</dt>
@@ -25,14 +25,14 @@
             <Source>
                 <outcommod>myZAI</outcommod>
                 <outrecipe>myZAI</outrecipe>
-                <throughput>1000</throughput>
-		<inventory_size>1000</inventory_size>
+                <throughput>100000</throughput>
+                <inventory_size>100000</inventory_size>
             </Source>
         </config>
     </prototype>
 
     <prototype>
-      <name>Storage_</name>
+      <name>Storage</name>
       <config>
 	<Storage>
 	  <in_commods>
@@ -45,19 +45,6 @@
       </config>
     </prototype>
 
-
-    <prototype>
-      <name>Storage_2</name>
-      <config>
-	<Storage>
-	  <in_commods>
-	    <val>myzai_stored</val>
-	  </in_commods>
-	  <out_commods> <val>myzai_stored_2</val></out_commods>
-	  <residence_time>0</residence_time>
-	</Storage>
-      </config>
-    </prototype>
     
     <prototype>
       <name>deployer</name>
@@ -65,7 +52,7 @@
 	<DeployInst>
 	  <prototypes>
 	    <val>Source</val>
-	    <val>Storage_</val>
+	    <val>Storage</val>
 	  </prototypes>
 
 	  <build_times>
@@ -88,7 +75,7 @@
     <recipe>
         <name>myZAI</name>
         <basis>atom</basis>
-        <nuclide><id>942410000</id>    <comp>1</comp></nuclide>
+        <nuclide><id>210Po</id>    <comp>1</comp></nuclide>
     </recipe>
     
 </simulation>
