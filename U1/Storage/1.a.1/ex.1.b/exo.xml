@@ -1,0 +1,80 @@
+<simulation>
+    <schematype>flat</schematype>
+    <control>
+        <duration>1200</duration>
+        <startmonth>1</startmonth>
+        <startyear>0</startyear>
+	<decay>lazy</decay>
+    </control>
+
+    <archetypes>
+        <spec><lib>cycamore</lib><name>Sink</name></spec>
+        <spec> <lib>cycamore</lib> <name>DeployInst</name></spec>
+        <spec><lib>cycamore</lib><name>Source</name></spec>
+        <spec><lib>cycamore</lib><name>Reactor</name></spec>
+        <spec><lib>cycamore</lib><name>Enrichment</name></spec>
+        <spec><lib>cycamore</lib><name>Storage</name></spec>
+        <spec><lib>agents</lib><name>NullRegion</name></spec>
+        <spec><lib>agents</lib><name>NullInst</name></spec>
+    </archetypes>
+
+    <prototype>
+        <name>Source</name>
+        <config>
+            <Source>
+                <outcommod>myZAI</outcommod>
+                <outrecipe>myZAI</outrecipe>
+                <throughput>100000</throughput>
+                <inventory_size>100000</inventory_size>
+            </Source>
+        </config>
+    </prototype>
+
+    <prototype>
+      <name>STR_1</name>
+      <config>
+	<Storage>
+	  <in_commods>
+	    <val>myZAI</val>
+	    <val>myzai_stored</val>
+	  </in_commods>
+	  <out_commods> <val>myzai_stored</val></out_commods>
+	  <residence_time>0</residence_time>
+	</Storage>
+      </config>
+    </prototype>
+
+    
+    <prototype>
+      <name>deployer</name>
+      <config>
+	<DeployInst>
+	  <prototypes>
+	    <val>Source</val>
+	    <val>STR_1</val>
+	  </prototypes>
+
+	  <build_times>
+	    <val>1</val>
+	    <val>1</val>
+	  </build_times>
+
+	  <n_build>
+	    <val>1</val>
+	    <val>1</val>
+	  </n_build>
+
+
+	</DeployInst>
+      </config>
+    </prototype>
+
+        <agent> <name>PrototypeDeployer</name> <prototype>deployer</prototype> </agent>
+
+    <recipe>
+        <name>myZAI</name>
+        <basis>atom</basis>
+        <nuclide><id>210Po</id>    <comp>1</comp></nuclide>
+    </recipe>
+    
+</simulation>
