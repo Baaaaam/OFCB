@@ -1,10 +1,10 @@
 <simulation>
     <schematype>flat</schematype>
     <control>
-        <duration>10000</duration>
+        <duration>20000</duration>
         <startmonth>1</startmonth>
         <startyear>0</startyear>
-        <dt>315576000</dt>
+        <dt>1577880000</dt>
 	<decay>lazy</decay>
     </control>
 
