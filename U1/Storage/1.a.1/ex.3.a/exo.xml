@@ -1,11 +1,11 @@
 <simulation>
     <schematype>flat</schematype>
     <control>
-        <duration>720</duration>
+        <duration>1200</duration>
         <startmonth>1</startmonth>
         <startyear>0</startyear>
         <dt>3600</dt>
-	<decay>lazy</decay>
+        <decay>lazy</decay>
     </control>
 
     <archetypes>
